@@ -13,7 +13,7 @@
 ######################################
 # target
 ######################################
-TARGET = nucleo-f446re-microROS-demo
+TARGET = nucleo-f446re-microROS-PlatformIO
 
 
 ######################################
@@ -36,31 +36,31 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-Core/Src/main.c \
-Core/Src/stm32f4xx_it.c \
-Core/Src/stm32f4xx_hal_msp.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
-Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
-Core/Src/system_stm32f4xx.c \
-Core/Src/freertos.c \
-Core/Src/stm32f4xx_hal_timebase_tim.c \
+src/main.c \
+src/stm32f4xx_it.c \
+src/stm32f4xx_hal_msp.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
+~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
+src/system_stm32f4xx.c \
+src/freertos.c \
+src/stm32f4xx_hal_timebase_tim.c \
 Middlewares/Third_Party/FreeRTOS/Source/croutine.c \
 Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
 Middlewares/Third_Party/FreeRTOS/Source/list.c \
@@ -131,10 +131,10 @@ AS_INCLUDES =
 # C includes # Edited for platformio
 C_INCLUDES =  \
 -Iinc \
--IDrivers/STM32F4xx_HAL_Driver/Inc \
--IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
--IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
--IDrivers/CMSIS/Include \
+-I~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc \
+-I~/.platformio/packages/framework-stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
+-I~/.platformio/packages/framework-stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
+-I~/.platformio/packages/framework-stm32cubef4/Drivers/CMSIS/Include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
