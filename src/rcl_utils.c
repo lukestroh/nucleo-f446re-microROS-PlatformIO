@@ -11,7 +11,10 @@ bool create_rcl_entities(
 //     // Init allocator
 //   *allocator = rcl_get_default_allocator();
 
-  rcl_ret_t status;
+  rcl_ret_t status = RCL_RET_OK;
+  if (status) {
+    return false;
+  }
 
 //   // create init_options
 //   status = rclc_support_init(support, 0, NULL, allocator);
