@@ -6,3 +6,4 @@
 
 micro_ros_stm32cubemx_utils/
 .vscode/
+build/

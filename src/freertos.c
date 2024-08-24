@@ -170,7 +170,7 @@ void StartmicroROSTask(void *argument) {
         }
         break;
       case AGENT_CONNECTED:
-        execute_every_n_ms(10, system_state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED);
+        execute_every_n_ms(100, system_state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED);
         if (system_state == AGENT_CONNECTED) {
           for (uint8_t i=0; i<msg.data.size; ++i){
             msg.data.data[i]++;
