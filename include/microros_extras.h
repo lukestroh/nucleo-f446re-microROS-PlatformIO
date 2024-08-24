@@ -3,7 +3,7 @@
 
 // #include <rmw_microxrcedds_c/config.h>
 #include <uxr/client/transport.h>
-
+#include <stdbool.h>
 // #include "FreeRTOS.h"
 // #include "task.h"
 

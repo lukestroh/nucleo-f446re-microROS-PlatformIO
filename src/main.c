@@ -18,9 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
-
-
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -32,17 +29,7 @@
 #include "freertos.h"
 #include "rcl_utils.h"
 #include "system_state.h"
-#include "microros_extras.h"
-#include <std_msgs/msg/int32.h>
-// #include <branch_detection_interfaces/msg/vl53l8cx8x8.h>
-#include <rcl/rcl.h>
-#include <rcl/error_handling.h>
-#include <rclc/rclc.h>
-#include <rclc/executor.h>
-#include <uxr/client/transport.h>
-#include <rmw_microxrcedds_c/config.h>
-#include <rmw_microros/rmw_microros.h>
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+
 
 
 /* USER CODE END Includes */
@@ -69,20 +56,6 @@ DMA_HandleTypeDef hdma_usart2_rx;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
-/* Definitions for blink_LED */
-osThreadId_t blink_LEDHandle;
-const osThreadAttr_t blink_LED_attributes = {
-  .name = "blink_LED",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
-/* Definitions for microROS */
-osThreadId_t microROSHandle;
-const osThreadAttr_t microROS_attributes = {
-  .name = "microROS",
-  .stack_size = 3000 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -152,13 +125,26 @@ int main(void)
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
-
+  /* Definitions for blink_LED */
+  osThreadId_t blink_LEDHandle;
+  const osThreadAttr_t blink_LED_attributes = {
+    .name = "blink_LED",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t) osPriorityLow,
+  };
+  /* Definitions for microROS */
+  osThreadId_t microROSHandle;
+  const osThreadAttr_t microROS_attributes = {
+    .name = "microROS",
+    .stack_size = 3000 * 4,
+    .priority = (osPriority_t) osPriorityNormal,
+  };
   /* Create the thread(s) */
   /* creation of blink_LED */
   blink_LEDHandle = osThreadNew(StartBlinkLEDTask, NULL, &blink_LED_attributes);
 
   /* creation of microROS */
-  microROSHandle = osThreadNew(StartmicroROSTask, NULL, &microROS_attributes);
+  microROSHandle = osThreadNew(StartmicroROSTask, &huart2, &microROS_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
